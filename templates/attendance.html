@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Mark Attendance</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <label>Select Date:</label>
+    <input type="date" name="date" required><br><br>
+
+    {% for s in students %}
+        <div>
+            {{ s.name }}
+            <input type="checkbox" name="{{ s.id }}">
+        </div>
+    {% endfor %}
+
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}
